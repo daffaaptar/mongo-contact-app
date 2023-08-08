@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Halaman Tambah Data</a>
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="navbarNav" >
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+  <div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 style="text-align: center;"> Form Ubah Data Contact</h2>
+            <% if (typeof errors != 'undefined') { %>
+                <div class="alert alert-danger" role="alert">
+                    <ul>
+                        <% errors.forEach(error => { %>
+                         <li><%= error.msg %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            <% } %>
+            <form method="post" action="/contact/update">
+                <input type="hidden"name="oldNama"value="<%= (contact.oldNama)?
+               contact.oldNama : contact.nama %>"/> 
+                <div class="mb-3"> 
+                    <label for="nama" class="form-label">Nama</label> 
+                    <input type="text" class="form-control" id="nama" name="nama" required value="<%= contact.nama %>"/> 
+                  </div>  
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required value="<%= contact.email %>"/>
+                </div>
+                <div class="mb-3">
+                  <label for="noHP" class="form-label">No Handphone</label>
+                  <input type="text" class="form-control" id="noHP" name="noHP" required value="<%= contact.nohp %>"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Data</button>
+              </form>
+        </div>
+    </div>
+</div>

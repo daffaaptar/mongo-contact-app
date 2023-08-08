@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Data Mahasiswa</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body class="p-3 m-0 border-0 bd-example m-0 border-0">
+
+    <!-- Example Code -->
+    
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Halaman Contact</a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="cont p-5">
+      <div class="row">
+        <div class="col-md-20">
+          <h4 style="text-align: center; margin-bottom: 25px;">Daftar Contact</h4>
+          <a href="/contact/add" class="btn btn-primary mb-2">Tambah Data Contact</a>
+
+          <% if (msg.length !== 0) { %> 
+            <div class="alert alert-success" role="alert"><%= msg %></div> 
+        <% } %>
+
+          <table class ="table margin">
+            <thead>
+              <tr >
+                <th scope="col">No</th>
+                <th scope="col">Nama</th>
+                <th scope="col">No HP</th>
+                <th scope="col">Aksi</th>
+              </tr>
+            </thead>
+            <tbody >
+              <% if (contacts.length === 0) { %>
+                <tr>
+                  <td colspan="4">
+                    <div class="alert alert-danger" role="alert">
+                      Data Kontak Masih Kosong!
+                      </div>
+                  </td>
+                </tr>
+              <% } %>
+              <% let no = 1; %> <% contacts.forEach(contact => { %>
+                <tr>
+                  <th scope="row"><%= no++ %></th>
+                  <td><%= contact.nama %></td>
+                  <td><%= contact.email %></td>
+                  <td>
+                    <a href="/contact/<%= contact.nama %>" class="btn btn-success badge rounded-pil">Detail</a>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <!-- End Example Code -->
+    <!--BS Icon-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  </body>
+</html>
